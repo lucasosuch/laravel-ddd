@@ -1,95 +1,23 @@
 paths:
   - ./app
-
+exclude_files:
+  - '#.*test.*#'
 layers:
-  - name: Productivity module Infrastructure layer
-    collectors:
-      - type: directory
-        regex: Productivity/Infrastructure/.*
-  - name: Users module Infrastructure layer
-    collectors:
-      - type: directory
-        regex: Users/Infrastructure/.*
-  - name: Shared module Infrastructure layer
-    collectors:
-      - type: directory
-        regex: Shared/Infrastructure/.*
-  - name: Productivity module Application layer
-    collectors:
-      - type: directory
-        regex: Productivity/Application/.*
-  - name: Users module Application layer
-    collectors:
-      - type: directory
-        regex: Users/Application/.*
-  - name: Shared module Application layer
-    collectors:
-      - type: directory
-        regex: Shared/Application/.*
-  - name: Productivity module Domain layer
-    collectors:
-      - type: directory
-        regex: Productivity/Domain/.*
-  - name: Users module Domain layer
-    collectors:
-      - type: directory
-        regex: Users/Domain/.*
-  - name: Shared module Domain layer
-    collectors:
-      - type: directory
-        regex: Shared/Domain/.*
-  - name: Framework Domain layer
+  - name: Controller
     collectors:
       - type: className
-        regex: Streak\\Domain\\.*
-  - name: Framework Application layer
+        regex: .*Controller.*
+  - name: Repository
     collectors:
       - type: className
-        regex: Streak\\Application\\.*
-  - name: Framework Infrastructure layer
+        regex: .*Repository.*
+  - name: Service
     collectors:
       - type: className
-        regex: Streak\\Infrastructure\\.*
-
+        regex: .*Service.*
 ruleset:
-  # Productivity module
-  Productivity module Infrastructure layer:
-    - Productivity module Application layer
-    - Productivity module Domain layer
-    - Framework Infrastructure layer
-    - Framework Application layer
-    - Framework Domain layer
-  Productivity module Application layer:
-    - Productivity module Domain layer
-    - Shared module Application layer
-    - Framework Application layer
-    - Framework Domain layer
-  Productivity module Domain layer:
-    - Framework Domain layer
-  # Users module
-  Users module Infrastructure layer:
-    - Users module Application layer
-    - Users module Domain layer
-    - Framework Infrastructure layer
-    - Framework Application layer
-    - Framework Domain layer
-  Users module Application layer:
-    - Users module Domain layer
-    - Shared module Application layer
-    - Framework Application layer
-    - Framework Domain layer
-  Users module Domain layer:
-    - Framework Domain layer
-  # Shared module
-  Shared module Infrastructure layer:
-    - Shared module Application layer
-    - Shared module Domain layer
-    - Framework Infrastructure layer
-    - Framework Application layer
-    - Framework Domain layer
-  Shared module Application layer:
-    - Shared module Domain layer
-    - Framework Application layer
-    - Framework Domain layer
-  Shared module Domain layer:
-    - Framework Domain layer
+  Controller:
+    - Service
+  Service:
+    - Repository
+  Repository: ~
