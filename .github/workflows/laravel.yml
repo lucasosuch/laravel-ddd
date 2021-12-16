@@ -33,5 +33,7 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    - name: Fix app directory
+    - name: Beautify app directory
       run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app/
+    - name: Validate app directory
+      run: vendor/bin/rector process app
