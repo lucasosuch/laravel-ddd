@@ -33,6 +33,8 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    - name: Install php-cs-fixer
+      run: composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer
     - name: Beautify app directory
       run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app/
     - name: Validate app directory
