@@ -17,6 +17,7 @@
         "webpatser/laravel-uuid": "^4.0"
     },
     "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
@@ -56,6 +57,15 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "echo committing as $(git config user.name)",
+                "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app"
+            ],
+            "pre-push": [
+                "php-cs-fixer fix --dry-run app"
+            ]
         }
     },
     "config": {
