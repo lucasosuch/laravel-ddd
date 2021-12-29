@@ -64,7 +64,7 @@
                 "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app"
             ],
             "pre-push": [
-                "php-cs-fixer fix --dry-run app"
+                "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run app"
             ]
         }
     },
